@@ -1,4 +1,4 @@
-name: Pipeline con error
+name: Pipeline corregido
 
 on: [push]
 
@@ -7,7 +7,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    #  1. Descargar código (SIEMPRE lo primero)
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    #  2. Instalar Node
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
+
+    #  3. Ejecutar aplicación
     - name: Ejecutar comando
       run: node app.js
-      
-- uses: actions/checkout@v3
