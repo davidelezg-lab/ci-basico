@@ -1,22 +1,14 @@
-name: Pipeline corregido
+name: Pipeline paralelo
 
 on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    #  1. Descargar código (SIEMPRE lo primero)
-    - name: Checkout
-      uses: actions/checkout@v4
+    - run: echo "Build OK"
 
-    #  2. Instalar Node
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: 18
-
-    #  3. Ejecutar aplicación
-    - name: Ejecutar comando
-      run: node app.js
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "Test OK"
