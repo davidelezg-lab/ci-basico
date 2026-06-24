@@ -7,8 +7,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+    - name: Descargar código
+      uses: actions/checkout@v3   # 🔴 CLAVE
+
+    - name: Ver archivos
+      run: ls -l                  # 👈 DEBUG (muy útil)
 
     - name: Instalar Node
       uses: actions/setup-node@v3
