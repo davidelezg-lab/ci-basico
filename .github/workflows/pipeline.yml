@@ -1,1 +1,17 @@
+name: Pipeline básico
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clonar repo
+      uses: actions/checkout@v3
+
+    - name: Mensaje
+      run: echo "Hola desde Jenkins en cloud (GitHub Actions)"
 
