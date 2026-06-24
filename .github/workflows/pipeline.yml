@@ -9,27 +9,38 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 🔴 CLAVE: Descargar el código
-    - name: Checkout del repositorio
-      uses: actions/checkout@v3
+    # ✅ 1. Checkout con version clara
+    - name: Checkout
+      uses: actions/checkout@v4
 
-    # 🔍 DEBUG (MUY IMPORTANTE PARA CLASE)
-    - name: Ver directorio actual
-      run: pwd
+    # ✅ 2. DEBUG COMPLETO
+    - name: Mostrar info repo
+      run: |
+        echo "PWD:"
+        pwd
+        echo "-----"
+        echo "Contenido raíz:"
+        ls -la
+        echo "-----"
+        echo "Árbol completo:"
+        find .
 
-    - name: Ver contenido
-      run: ls -R
-
-    # ⚙️ Instalar Node
-    - name: Instalar Node
-      uses: actions/setup-node@v3
+    # ✅ 3. Instalar Node
+    - name: Setup Node
+      uses: actions/setup-node@v4
       with:
         node-version: 18
 
-    # 📦 Instalar dependencias
+    # ✅ 4. Ejecutar npm SOLO si existe package.json
     - name: Instalar dependencias
-      run: npm install
+      run: |
+        if [ -f package.json ]; then
+          npm install
+        else
+          echo "ERROR: package.json NO encontrado"
+          exit 1
+        fi
 
-    # 🚀 Ejecutar app
+    # ✅ 5. Ejecutar app
     - name: Ejecutar app
       run: npm start
