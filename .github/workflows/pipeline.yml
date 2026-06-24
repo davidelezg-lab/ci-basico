@@ -1,16 +1,20 @@
-name: Pipeline básico
+name: Pipeline con stages
 
-on:
-  push:
-    branches: [ "main" ]
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Clonar repo
+    - name: Clonar código
       uses: actions/checkout@v3
 
-    - name: Mensaje
-      run: echo "Hola desde Jenkins en cloud (GitHub Actions)"
+    - name: Build
+      run: echo "Construyendo..."
+
+    - name: Test
+      run: echo "Ejecutando tests..."
+
+    - name: Deploy
+      run: echo "Desplegando..."
