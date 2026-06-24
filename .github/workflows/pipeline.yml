@@ -1,25 +1,35 @@
 name: Pipeline Node
 
-on: [push]
+on:
+  push:
+    branches: [ "main" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Descargar código
-      uses: actions/checkout@v3   # 🔴 CLAVE
+    # 🔴 CLAVE: Descargar el código
+    - name: Checkout del repositorio
+      uses: actions/checkout@v3
 
-    - name: Ver archivos
-      run: ls -l                  # 👈 DEBUG (muy útil)
+    # 🔍 DEBUG (MUY IMPORTANTE PARA CLASE)
+    - name: Ver directorio actual
+      run: pwd
 
+    - name: Ver contenido
+      run: ls -R
+
+    # ⚙️ Instalar Node
     - name: Instalar Node
       uses: actions/setup-node@v3
       with:
         node-version: 18
 
+    # 📦 Instalar dependencias
     - name: Instalar dependencias
       run: npm install
 
+    # 🚀 Ejecutar app
     - name: Ejecutar app
       run: npm start
