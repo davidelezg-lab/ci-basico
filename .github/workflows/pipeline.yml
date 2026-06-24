@@ -9,3 +9,5 @@ jobs:
     steps:
     - name: Ejecutar comando
       run: node app.js
+      
+- uses: actions/checkout@v3
