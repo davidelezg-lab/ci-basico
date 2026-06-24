@@ -14,4 +14,3 @@ jobs:
 
     - name: Mensaje
       run: echo "Hola desde Jenkins en cloud (GitHub Actions)"
-
